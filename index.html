@@ -1,0 +1,714 @@
+<!--
+    Copyright (c) 2025 Zeal Web Technologies (https://zealwebtech.com)
+    All Rights Reserved.
+
+    This file is part of SalesCRM. No one is permitted to copy, modify,
+    distribute, or create derivative works of this file without prior written
+    permission from Zeal Web Technologies.
+    For permissions contact: legal@zealwebtech.com
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SalesCRM Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>SalesCRM</h1>
+            </div>
+            <nav class="menu">
+                <ul>
+                    <li>
+                        <a href="#" onclick="navigate('dashboard'); return false;" class="menu-item active">
+                            <span class="icon">📊</span>
+                            <span class="label">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('manage-user'); return false;" class="menu-item">
+                            <span class="icon">👥</span>
+                            <span class="label">Manage User</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('manager-invoice'); return false;" class="menu-item">
+                            <span class="icon">📄</span>
+                            <span class="label">Manager Invoice</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('inventory'); return false;" class="menu-item">
+                            <span class="icon">📦</span>
+                            <span class="label">Inventory</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('product'); return false;" class="menu-item">
+                            <span class="icon">🛍️</span>
+                            <span class="label">Product</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('purchase'); return false;" class="menu-item">
+                            <span class="icon">🛒</span>
+                            <span class="label">Purchase</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('expenses'); return false;" class="menu-item">
+                            <span class="icon">💳</span>
+                            <span class="label">Expenses</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('accounting'); return false;" class="menu-item">
+                            <span class="icon">💰</span>
+                            <span class="label">Accounting</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('hrm'); return false;" class="menu-item">
+                            <span class="icon">👔</span>
+                            <span class="label">HRM</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="navigate('quotation'); return false;" class="menu-item">
+                            <span class="icon">📋</span>
+                            <span class="label">Quotation</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-content">
+                    <h2 id="page-title">Dashboard</h2>
+                    <div class="header-actions">
+                        <div class="user-profile">
+                            <span class="username">Admin User</span>
+                            <button class="logout-btn">Logout</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Area -->
+            <section class="content">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="page-section active">
+                    <div class="section-header">
+                        <h3>Dashboard</h3>
+                    </div>
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <div class="card-header">Total Sales</div>
+                            <div class="card-value">$125,420</div>
+                            <div class="card-footer">+12% from last month</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">Total Customers</div>
+                            <div class="card-value">1,247</div>
+                            <div class="card-footer">+45 new this month</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">Active Deals</div>
+                            <div class="card-value">89</div>
+                            <div class="card-footer">+23 in progress</div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header">Total Revenue</div>
+                            <div class="card-value">$542,800</div>
+                            <div class="card-footer">Year to date</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manage User Section -->
+                <div id="manage-user" class="page-section">
+                    <div class="section-header">
+                        <h3>Manage User</h3>
+                        <button class="btn btn-primary" onclick="openAddUserModal()">+ Add New User</button>
+                    </div>
+                    <div class="users-table-container">
+                        <table class="users-table">
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#001</td>
+                                    <td>John Doe</td>
+                                    <td>john.doe@example.com</td>
+                                    <td>Sales Manager</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#002</td>
+                                    <td>Jane Smith</td>
+                                    <td>jane.smith@example.com</td>
+                                    <td>Sales Executive</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#003</td>
+                                    <td>Mike Johnson</td>
+                                    <td>mike.johnson@example.com</td>
+                                    <td>Sales Representative</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#004</td>
+                                    <td>Sarah Williams</td>
+                                    <td>sarah.williams@example.com</td>
+                                    <td>Admin</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Manager Invoice Section -->
+                <div id="manager-invoice" class="page-section">
+                    <div class="section-header">
+                        <h3>Manager Invoice</h3>
+                        <button class="btn btn-primary" onclick="openCreateInvoiceModal()">+ Create Invoice</button>
+                    </div>
+                    <div class="invoice-filters">
+                        <input type="text" id="searchInvoice" placeholder="Search by invoice number or customer..." class="filter-input">
+                        <select id="filterStatus" class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Paid">Paid</option>
+                            <option value="Overdue">Overdue</option>
+                        </select>
+                    </div>
+                    <div class="invoices-table-container">
+                        <table class="invoices-table">
+                            <thead>
+                                <tr>
+                                    <th>Invoice #</th>
+                                    <th>Customer Name</th>
+                                    <th>Amount</th>
+                                    <th>Issue Date</th>
+                                    <th>Due Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#INV-001</td>
+                                    <td>Acme Corporation</td>
+                                    <td>$5,250.00</td>
+                                    <td>Nov 28, 2025</td>
+                                    <td>Dec 28, 2025</td>
+                                    <td><span class="badge badge-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="View">👁️</button>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#INV-002</td>
+                                    <td>Tech Solutions Inc</td>
+                                    <td>$8,750.00</td>
+                                    <td>Nov 20, 2025</td>
+                                    <td>Dec 20, 2025</td>
+                                    <td><span class="badge badge-paid">Paid</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="View">👁️</button>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#INV-003</td>
+                                    <td>Global Enterprises</td>
+                                    <td>$12,500.00</td>
+                                    <td>Nov 15, 2025</td>
+                                    <td>Dec 15, 2025</td>
+                                    <td><span class="badge badge-overdue">Overdue</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="View">👁️</button>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>#INV-004</td>
+                                    <td>Digital Ventures</td>
+                                    <td>$3,200.00</td>
+                                    <td>Dec 01, 2025</td>
+                                    <td>Dec 31, 2025</td>
+                                    <td><span class="badge badge-draft">Draft</span></td>
+                                    <td>
+                                        <button class="btn-icon" title="View">👁️</button>
+                                        <button class="btn-icon" title="Edit">✏️</button>
+                                        <button class="btn-icon" title="Delete">🗑️</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Inventory Section -->
+                <div id="inventory" class="page-section">
+                    <div class="section-header">
+                        <h3>Inventory Management</h3>
+                        <button class="btn btn-primary" onclick="openAddInventoryModal()">+ Add Item</button>
+                    </div>
+                    <div class="inventory-stats">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Items</div>
+                            <div class="stat-value">1,247</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Low Stock</div>
+                            <div class="stat-value warning">45</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Value</div>
+                            <div class="stat-value">$45,320</div>
+                        </div>
+                    </div>
+                    <div class="inventory-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Item ID</th>
+                                    <th>Item Name</th>
+                                    <th>Quantity</th>
+                                    <th>Unit Price</th>
+                                    <th>Total Value</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#ITM-001</td>
+                                    <td>Product A</td>
+                                    <td>250</td>
+                                    <td>$50.00</td>
+                                    <td>$12,500</td>
+                                    <td><span class="badge badge-success">In Stock</span></td>
+                                    <td><button class="btn-icon" onclick="navigateToProduct('#PRD-001')">→</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Product Section -->
+                <div id="product" class="page-section">
+                    <div class="section-header">
+                        <h3>Product Management</h3>
+                        <button class="btn btn-primary" onclick="openAddProductModal()">+ Add Product</button>
+                    </div>
+                    <div class="product-filters">
+                        <input type="text" placeholder="Search products..." class="filter-input">
+                        <select class="filter-select">
+                            <option>All Categories</option>
+                            <option>Electronics</option>
+                            <option>Software</option>
+                            <option>Services</option>
+                        </select>
+                    </div>
+                    <div class="product-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#PRD-001</td>
+                                    <td>Enterprise Software</td>
+                                    <td>Software</td>
+                                    <td>$1,200.00</td>
+                                    <td>45</td>
+                                    <td>
+                                        <button class="btn-icon" onclick="navigateToQuotation('#PRD-001')">📋</button>
+                                        <button class="btn-icon" onclick="navigateToPurchase('#PRD-001')">🛒</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Purchase Section -->
+                <div id="purchase" class="page-section">
+                    <div class="section-header">
+                        <h3>Purchase Orders</h3>
+                        <button class="btn btn-primary" onclick="openAddPurchaseModal()">+ New Purchase Order</button>
+                    </div>
+                    <div class="purchase-stats">
+                        <div class="stat-card">
+                            <div class="stat-label">Pending POs</div>
+                            <div class="stat-value">12</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Orders</div>
+                            <div class="stat-value">248</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Spent</div>
+                            <div class="stat-value">$125,680</div>
+                        </div>
+                    </div>
+                    <div class="purchase-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>PO #</th>
+                                    <th>Vendor</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#PO-001</td>
+                                    <td>Vendor A</td>
+                                    <td>$5,250.00</td>
+                                    <td>Dec 01, 2025</td>
+                                    <td><span class="badge badge-pending">Pending</span></td>
+                                    <td><button class="btn-icon" onclick="navigateToAccounting('#PO-001')">💰</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Expenses Section -->
+                <div id="expenses" class="page-section">
+                    <div class="section-header">
+                        <h3>Expense Management</h3>
+                        <button class="btn btn-primary" onclick="openAddExpenseModal()">+ Add Expense</button>
+                    </div>
+                    <div class="expense-stats">
+                        <div class="stat-card">
+                            <div class="stat-label">This Month</div>
+                            <div class="stat-value">$18,550</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">This Year</div>
+                            <div class="stat-value">$125,300</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Pending Approval</div>
+                            <div class="stat-value warning">8</div>
+                        </div>
+                    </div>
+                    <div class="expense-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Expense ID</th>
+                                    <th>Category</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#EXP-001</td>
+                                    <td>Office Supplies</td>
+                                    <td>$250.00</td>
+                                    <td>Dec 05, 2025</td>
+                                    <td><span class="badge badge-success">Approved</span></td>
+                                    <td><button class="btn-icon" onclick="navigateToAccounting('#EXP-001')">💰</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Accounting Section -->
+                <div id="accounting" class="page-section">
+                    <div class="section-header">
+                        <h3>Accounting & Finance</h3>
+                        <button class="btn btn-primary" onclick="openFinancialReportModal()">📊 View Report</button>
+                    </div>
+                    <div class="accounting-stats">
+                        <div class="stat-card success">
+                            <div class="stat-label">Total Income</div>
+                            <div class="stat-value">$542,800</div>
+                        </div>
+                        <div class="stat-card danger">
+                            <div class="stat-label">Total Expenses</div>
+                            <div class="stat-value">$125,300</div>
+                        </div>
+                        <div class="stat-card primary">
+                            <div class="stat-label">Net Profit</div>
+                            <div class="stat-value">$417,500</div>
+                        </div>
+                    </div>
+                    <div class="accounting-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Transaction ID</th>
+                                    <th>Type</th>
+                                    <th>Amount</th>
+                                    <th>Reference</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TRX-001</td>
+                                    <td>Invoice Payment</td>
+                                    <td>$5,250.00</td>
+                                    <td>#INV-001</td>
+                                    <td>Dec 05, 2025</td>
+                                    <td><span class="badge badge-success">Completed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- HRM Section -->
+                <div id="hrm" class="page-section">
+                    <div class="section-header">
+                        <h3>Human Resource Management</h3>
+                        <button class="btn btn-primary" onclick="openAddEmployeeModal()">+ Add Employee</button>
+                    </div>
+                    <div class="hrm-stats">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Employees</div>
+                            <div class="stat-value">145</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">On Leave</div>
+                            <div class="stat-value">5</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Payroll</div>
+                            <div class="stat-value">$125,000/mo</div>
+                        </div>
+                    </div>
+                    <div class="hrm-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Employee ID</th>
+                                    <th>Name</th>
+                                    <th>Department</th>
+                                    <th>Position</th>
+                                    <th>Salary</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#EMP-001</td>
+                                    <td>John Doe</td>
+                                    <td>Sales</td>
+                                    <td>Sales Manager</td>
+                                    <td>$8,500</td>
+                                    <td><span class="badge badge-success">Active</span></td>
+                                    <td><button class="btn-icon" onclick="navigateToAccounting('#EMP-001')">💰</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Quotation Section -->
+                <div id="quotation" class="page-section">
+                    <div class="section-header">
+                        <h3>Quotation Management</h3>
+                        <button class="btn btn-primary" onclick="openAddQuotationModal()">+ New Quotation</button>
+                    </div>
+                    <div class="quotation-filters">
+                        <input type="text" placeholder="Search quotations..." class="filter-input">
+                        <select class="filter-select">
+                            <option value="">All Status</option>
+                            <option value="Draft">Draft</option>
+                            <option value="Sent">Sent</option>
+                            <option value="Accepted">Accepted</option>
+                            <option value="Rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="quotation-table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Quote #</th>
+                                    <th>Customer</th>
+                                    <th>Amount</th>
+                                    <th>Products</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#QT-001</td>
+                                    <td>Acme Corp</td>
+                                    <td>$8,500.00</td>
+                                    <td>
+                                        <button class="btn-icon" onclick="navigateToProduct('#PRD-001')">🛍️</button>
+                                    </td>
+                                    <td><span class="badge badge-pending">Sent</span></td>
+                                    <td>
+                                        <button class="btn-icon" onclick="convertToInvoice('#QT-001')">📄</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add User Modal -->
+    <div id="addUserModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add New User</h3>
+                <button class="close-btn" onclick="closeAddUserModal()">&times;</button>
+            </div>
+            <form class="modal-form">
+                <div class="form-group">
+                    <label for="userName">Name:</label>
+                    <input type="text" id="userName" placeholder="Enter full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email" id="userEmail" placeholder="Enter email address" required>
+                </div>
+                <div class="form-group">
+                    <label for="userRole">Role:</label>
+                    <select id="userRole" required>
+                        <option value="">Select a role</option>
+                        <option value="Sales Manager">Sales Manager</option>
+                        <option value="Sales Executive">Sales Executive</option>
+                        <option value="Sales Representative">Sales Representative</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAddUserModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Invoice Modal -->
+    <div id="createInvoiceModal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Create Invoice</h3>
+                <button class="close-btn" onclick="closeCreateInvoiceModal()">&times;</button>
+            </div>
+            <form class="modal-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="invoiceNumber">Invoice Number:</label>
+                        <input type="text" id="invoiceNumber" placeholder="Auto-generated" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoiceDate">Issue Date:</label>
+                        <input type="date" id="invoiceDate" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="customerName">Customer Name:</label>
+                        <input type="text" id="customerName" placeholder="Enter customer name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerEmail">Customer Email:</label>
+                        <input type="email" id="customerEmail" placeholder="Enter email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dueDate">Due Date:</label>
+                        <input type="date" id="dueDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoiceAmount">Amount ($):</label>
+                        <input type="number" id="invoiceAmount" placeholder="0.00" step="0.01" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceDescription">Description:</label>
+                    <textarea id="invoiceDescription" placeholder="Enter invoice details" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceStatus">Status:</label>
+                    <select id="invoiceStatus" required>
+                        <option value="Draft">Draft</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Overdue">Overdue</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeCreateInvoiceModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Invoice</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
